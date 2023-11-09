@@ -46,9 +46,9 @@ def prepare_lfw_dataloaders(
         a tuple of public dataloader, a list of local dataloaders, test dataloader,
         and the list of target labels.
     """
-    nomask_path_list = glob.glob(f"{data_folder}/lfw-align-128/*/*")
+    nomask_path_list = glob.glob(f"{data_folder}/aligned/*")
     nomask_path_list.sort()
-    mask_path_list = glob.glob(f"{data_folder}/lfw-align-128-masked/*/*")
+    mask_path_list = glob.glob(f"{data_folder}/origin/*")
     mask_path_list.sort()
 
     path_list = []
