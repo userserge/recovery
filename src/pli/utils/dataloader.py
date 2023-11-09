@@ -118,19 +118,19 @@ def prepare_lfw_dataloaders(
 
         for idx in idxs:
             for path in path_list[idx]:
-                X_public_list.append(cv2.imread(path))
+                X_public_list.append(cv2.resize(cv2.imread(path), (width, height)))
                 y_public_list.append(name2id[u_name])
                 is_sensitive_public_list.append(0)
             for path in nomask_path_list[idx]:
                 if name2id[u_name] in name_id2client_id:
                     X_private_lists[name_id2client_id[name2id[u_name]]].append(
-                        cv2.imread(path)
+                        X_public_list.append(cv2.resize(cv2.imread(path), (width, height)))
                     )
                     y_private_lists[name_id2client_id[name2id[u_name]]].append(
                         name2id[u_name]
                     )
                 else:
-                    X_public_list.append(cv2.imread(path))
+                    X_public_list.append(cv2.resize(cv2.imread(path), (width, height)))
                     y_public_list.append(name2id[u_name])
                     is_sensitive_public_list.append(1)
 
